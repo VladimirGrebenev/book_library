@@ -183,12 +183,12 @@ CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
 # Full list of email settings:
 #   https://docs.djangoproject.com/en/3.2/ref/settings/#email
-EMAIL_HOST = "localhost"
-EMAIL_PORT = "25"
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
 
 # For debugging: python -m smtpd -n -c DebuggingServer localhost:25
-EMAIL_HOST_USER = "admin@library.local"
-EMAIL_HOST_PASSWORD = "admin_password"
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_SSL = False
 # If server support TLS:
 EMAIL_USE_TLS = True
