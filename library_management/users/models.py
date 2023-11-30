@@ -10,7 +10,7 @@ from .managers import CustomUserManager
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(default=uuid4, primary_key=True, verbose_name='id')
     user_name = models.CharField(max_length=64, verbose_name='username')
-    email = models.EmailField(max_length=256, unique=True, blank=False,
+    email = models.EmailField(max_length=250, unique=True, blank=False,
                               verbose_name='email')
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)

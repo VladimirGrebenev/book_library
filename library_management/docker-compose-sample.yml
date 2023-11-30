@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:latest
+    ports:
+      - '3306:3306'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Root!255724'
+      MYSQL_DATABASE: 'db_library'
+      MYSQL_USER: 'Veneberg'
+      MYSQL_PASSWORD: 'Veneberg!255724'
+    volumes:
+      - /tmp/app/mysqld:/var/run/mysqld
+      - ./db:/var/lib/mysql
+  redis:
+    image: redis:latest
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    command: bash -c "sleep 35 && python manage.py migrate
+      && python manage.py fillusers
+      && python manage.py fillbooks
+      && python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - db
+      - redis
