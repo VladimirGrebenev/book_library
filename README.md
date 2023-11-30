@@ -6,3 +6,8 @@ books library management API
    you run development settings sqlite+celery+radis
 2. python manage.py runserver --settings=library_management.conf_prod
    you run deploy settings mysql+celery+radis 
+
+#You can quickly fill the database with the following commands:
+1. python manage.py fillusers
+2. python manage.py fillbooks
+
