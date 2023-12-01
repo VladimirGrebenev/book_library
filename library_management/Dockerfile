@@ -15,17 +15,20 @@ COPY requirements.txt .
 
 # Установите зависимости
 RUN pip install -r requirements.txt
+RUN pip install gunicorn
 
 # Скопируйте все файлы проекта в контейнер
 COPY . .
 
 # Запустите команду для миграции базы данных
+#RUN python manage.py collectstatic --noinput
 #RUN python manage.py migrate
 #RUN python manage.py fillusers
 #RUN python manage.py fillbooks
 
-# Откройте порт 8000 для веб-сервера Django
-EXPOSE 8000
+#
+## Откройте порт 8000 для веб-сервера Django
+#EXPOSE 8000
 
 ## Запустите команду для запуска сервера Django
 #CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import path, include, re_path
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -29,6 +30,7 @@ router.register('books', BookModelViewSet)
 
 
 urlpatterns = [
+    path('', lambda request: redirect('/swagger/')),
     path('admin/', admin.site.urls),
     path('api/books/', include('books.urls')),
     path('api/users/', include('users.urls')),
@@ -45,3 +47,7 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
+
+from django.conf.urls.static import static
+from . import conf_prod
+urlpatterns += static(conf_prod.STATIC_URL, document_root=conf_prod.STATIC_ROOT)
