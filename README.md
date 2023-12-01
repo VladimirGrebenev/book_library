@@ -15,7 +15,7 @@ books library management API
 you must dont forget set settings to evn: export DJANGO_SETTINGS_MODULE="library_management.conf_prod",
 install Mysql, create DB
 
-# REDIS 'hello_mail':
+# CELERY 'hello_mail':
 Now REDIS send mail to file to var/email-messages/
 You can change this simple in settins, just set your EMAIL settings and
 dont forget to chancge EMAIL_BACKEND
