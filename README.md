@@ -16,7 +16,7 @@ you must dont forget set settings to evn: export DJANGO_SETTINGS_MODULE="library
 install Mysql, create DB
 
 # CELERY 'hello_mail':
-Now REDIS send mail to file to var/email-messages/
+Now CELERY send mail to file to var/email-messages/
 You can change this simple in settins, just set your EMAIL settings and
 dont forget to chancge EMAIL_BACKEND
 
